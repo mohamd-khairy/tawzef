@@ -21,20 +21,14 @@ class DashboardController extends Controller
     public function index()
     {
         // Get Active Users Count
-        $products_count = Product::count();
-
-        $informations_count = Information::where('ref','info')->count();
 
         $blogs_count = Blog::count();
 
-        $services_count = Service::count();
          // Return the response
         return view('dashboard::dashboard', compact(
-            'products_count',
-            'informations_count',
+
             'blogs_count',
-            'services_count',
-            
+
         ));
     }
 }

@@ -56,20 +56,7 @@
                                 </li>
                             @endhaspermission
 
-                            @haspermission('index-ads')
-                                <li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a
-                                        href="{{ route('ads.index') }}" class="kt-menu__link bg-none "><i
-                                            class="kt-menu__link-icon flaticon-medal"></i><span
-                                            class="kt-menu__link-text">{{ __('ads::ad.ads') }}</span></a>
-                                </li>
-                            @endhaspermission
 
-                            @haspermission('index-seo')
-                                <li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a
-                                        href="{{ route('seo.index') }}" class="kt-menu__link bg-none "><i
-                                            class="kt-menu__link-icon flaticon-dashboard"><span></span></i><span
-                                            class="kt-menu__link-text">{{ __('seo::seo.seo') }}</span></a></li>
-                            @endhaspermission
                             @haspermission('index-privacies')
                                 <li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a
                                         href="{{route('privacies.modals.update',['id' => 1])}}" class="kt-menu__link bg-none "><i
@@ -85,114 +72,6 @@
                         </ul>
                     </div>
                 </li>
-
-                @haspermission('index-products')
-                    <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
-                            class="kt-menu__link bg-none kt-menu__toggle"><i
-                                class="kt-menu__link-icon flaticon-grid-menu"></i><span
-                                class="kt-menu__link-text">{{ __('products::product.products') }}</span><i
-                                class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                        <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                            <ul class="kt-menu__subnav">
-                                @haspermission('index-products-categories')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a
-                                            href="{{ route('products.categories.index') }}" class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon-map"></i><span
-                                                class="kt-menu__link-text">{{ __('products::product.product_categories') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('index-products-brands')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a
-                                            href="{{ route('products.brands.index') }}" class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon-confetti"></i><span
-                                                class="kt-menu__link-text">{{ __('products::product.product_brands') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('index-products')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('products.index') }}"
-                                            class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon2-setup"></i><span
-                                                class="kt-menu__link-text">{{ __('products::product.products') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('index-products')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('imports.index') }}"
-                                            class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon2-setup"></i><span
-                                                class="kt-menu__link-text">{{ __('imports::imports.imports') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('index-products-sizes')
-                                <li class="kt-menu__item " aria-haspopup="true"><a
-                                        href="{{ route('products.sizes.index') }}" class="kt-menu__link bg-none "><i
-                                            class="kt-menu__link-icon flaticon-map"></i><span
-                                            class="kt-menu__link-text">{{ __('products::product.sizes') }}</span></a>
-                                </li>
-                            @endhaspermission
-                            </ul>
-                        </div>
-                    </li>
-                @endhaspermission
-
-                @haspermission('manage-orders')
-                    <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                        data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
-                            class="kt-menu__link bg-none kt-menu__toggle"><i
-                                class="kt-menu__link-icon flaticon-open-box"></i><span
-                                class="kt-menu__link-text">{{ __('orders::order.orders') }}</span><i
-                                class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                        <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                            <ul class="kt-menu__subnav">
-                                @haspermission('manage-order-statuses')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a
-                                            href="{{ route('order.statuses.index') }}" class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon-add-label-button"></i><span
-                                                class="kt-menu__link-text">{{ __('orders::order.order_statuses') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('manage-payment-methods')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a
-                                            href="{{ route('orders.payment_methods.index') }}"
-                                            class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon2-shopping-cart"></i><span
-                                                class="kt-menu__link-text">{{ __('orders::order.payment_methods') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('manage-shipping-methods')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a
-                                            href="{{ route('orders.shipping_methods.index') }}"
-                                            class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon2-shopping-cart"></i><span
-                                                class="kt-menu__link-text">{{ __('orders::order.shipping_methods') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('manage-coupon-codes')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a
-                                            href="{{ route('orders.coupon_codes.index') }}" class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon2-shopping-cart"></i><span
-                                                class="kt-menu__link-text">{{ __('orders::order.coupon_codes') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('index-locations')
-                                    <li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a
-                                            href="{{ route('locations.index') }}" class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon-map-location"><span></span></i><span
-                                                class="kt-menu__link-text">{{ __('locations::location.locations') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                                @haspermission('manage-orders')
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('orders.index') }}"
-                                            class="kt-menu__link bg-none "><i
-                                                class="kt-menu__link-icon flaticon-add-label-button"></i><span
-                                                class="kt-menu__link-text">{{ __('orders::order.orders') }}</span></a>
-                                    </li>
-                                @endhaspermission
-                            </ul>
-                        </div>
-                    </li>
-                @endhaspermission
-
 
                 @stack('header-menu-last')
                 <li id="header_menu_last" class="hidden kt-menu__item  kt-menu__item--submenu kt-menu__item--rel"

@@ -134,7 +134,7 @@
 
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
                         <div class="w-100 p-5 text-center">
-                            <img src="{{ asset('front/assets/img/logo-sport.png') }}" class="mt-5 w-75" >
+                            {{-- <img src="{{ asset('front/assets/img/logo-sport.png') }}" class="mt-5 w-75" > --}}
                         </div>
                         <div class="card-body p-5 text-center">
 
