@@ -1,0 +1,26 @@
+{
+    "name": "CMS",
+    "alias": "cms",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CMS\\Providers\\CMSServiceProvider",
+        "Modules\\CMS\\Providers\\CMSEventServiceProvider"
+
+    ],
+    "migration":{
+        "seeds":[
+            "Modules\\CMS\\Database\\Seeders\\CMSDatabaseSeeder",
+            "Modules\\CMS\\Database\\Seeders\\CMSModuleAwardPermissionsSeeder",
+            "Modules\\CMS\\Database\\Seeders\\CMSModuleTechnologyPermissionsSeeder",
+            "Modules\\CMS\\Database\\Seeders\\CMSModuleMagazinePermissionsSeeder",
+            "Modules\\CMS\\Database\\Seeders\\CMSModuleReportPermissionsSeeder",
+            "Modules\\CMS\\Database\\Seeders\\CMSModuleSocialsPermissionsSeeder"
+
+        ]
+    },
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

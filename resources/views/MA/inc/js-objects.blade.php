@@ -1,0 +1,5 @@
+<script>
+var eMADLists = {
+
+}
+</script>

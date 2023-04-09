@@ -1,0 +1,81 @@
+#kt_header {
+    /* box-shadow: rgb(255, 255, 255) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important; */
+    background: white !important;
+}
+.kt-container {
+    /* z-index: 1001; */
+    /* width: 15%; */
+    padding: 0 !important;
+}
+#kt_aside{
+    background-color: #177C8E !important;
+}
+.kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__link-icon{
+    color: #FFF;
+}
+.kt-aside--enabled .kt-content{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__ver-arrow{
+    color: #FFF;
+}
+.kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-topbar-toggler i {
+    color: #177C8E!important;
+}
+
+.kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler span {
+    background: #177C8E!important;
+}
+.kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler span::after {
+    background: #177C8E!important;
+}
+
+.kt-header-mobile .kt-header-mobile__toolbar .kt-header-mobile__toolbar-toggler span::before {
+    background: #177C8E!important;
+}
+
+.brand-logo {
+    display: flex;
+    justify-content: center;
+}
+.fancy-checkbox {
+    color: black;
+}
+.form-control {
+    border: 1px solid #a7a3a3 !important;
+}
+.table-bordered th,
+.table-bordered td,
+.table-bordered {
+    border: 1px solid rgb(249 249 252) !important;
+}
+.kt-portlet .kt-portlet__head,
+.kt-portlet__bar {
+    /* border-bottom: 1px solid gray !important; */
+}
+
+.kt-header-menu-wrapper .kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link {
+    background: none !important;
+    color: black !important;
+}
+
+.kt-header-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__link-text{
+    color: black !important;
+    font-size: 1.2rem !important;
+}
+.kt-section .kt-section__content.kt-section__content--solid{
+    background-color: white !important;
+    border: 1px solid #e2e5ec;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px gainsboro;
+
+}
+
+.kt-container{
+    width: 100% !important;
+}
+
+body{
+    font-weight: 700;
+}
