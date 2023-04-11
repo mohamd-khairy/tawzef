@@ -79,7 +79,7 @@
                                 <div class="custom-file-input mb-3">
                                     <div class="avatar rounded-circle">
                                         <img class="rounded-circle img-thumbnail" id="output" width="100"
-                                            src="{{ URL::asset($user->image) }}" alt="{{ $user->full_name }}">
+                                            src="{{ URL::asset('storage/'.$user->image) }}" alt="{{ $user->full_name }}">
                                     </div>
 
                                     <label class="form-label" for="ch-img">
@@ -170,12 +170,12 @@
                     <div class="job-item p-4 mb-4">
                         <div class="row g-4">
                             <div class="col-sm-12 col-md-8 d-flex align-items-center">
+
+
+                                <img class="flex-shrink-0 img-fluid border rounded"
+                                src="{{ asset('storage/'.$career->creator->image) }}" alt=""
+                                style="width: 80px; height: 80px;">
                                 <a href="{{ route('front.careerSingle', ['id' => $career->id]) }}">
-
-
-                                    <img class="flex-shrink-0 img-fluid border rounded"
-                                        src="{{ $career->creator->image }}" alt=""
-                                        style="width: 80px; height: 80px;">
                                     <div class="text-start ps-4">
                                         <h5 class="mb-3">{{ $career->title }}</h5>
                                         <span class="text-truncate me-3"><i
@@ -350,7 +350,7 @@
                         <div class="row g-4">
                             <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                 <img class="flex-shrink-0 img-fluid border rounded"
-                                    src="{{ $application->career->creator->image }}" alt=""
+                                            src="{{ asset('storage/'.$career->creator->image) }}" alt=""
                                     style="width: 80px; height: 80px;">
                                 <div class="text-start ps-4">
                                     <h5 class="mb-3">{{ $application->career->title }}</h5>
@@ -358,8 +358,8 @@
                                             class="fa fa-map-marker-alt text-primary me-2"></i>{{ $application->full_name }}</span>
                                     <span class="text-truncate me-3"><i
                                             class="far fa-clock text-primary me-2"></i>{{ $application->email }}</span>
-                                            <span class="text-truncate me-3"><i
-                                                class="far fa-clock text-primary me-2"></i>{{ $application->phone }}</span>
+                                    <span class="text-truncate me-3"><i
+                                            class="far fa-clock text-primary me-2"></i>{{ $application->phone }}</span>
                                     <p>{{ $application->message }}</p>
                                 </div>
                             </div>
@@ -368,8 +368,8 @@
                                 <div class="d-flex mb-3">
                                     {{-- <a class="btn btn-light btn-square me-3" href=""><i
                                         class="far fa-heart text-primary"></i></a> --}}
-                                    <a class="btn btn-primary"
-                                        href="{{ asset('storage/'.$application->resume) }}" download>Resume</a>
+                                    <a class="btn btn-primary" href="{{ asset('storage/' . $application->resume) }}"
+                                        download>Resume</a>
                                 </div>
                                 {{-- <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
                                 Line: 01 Jan,

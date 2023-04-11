@@ -27,14 +27,6 @@ class UpdateUserAction
         if (isset($data['image'])) {
             // Store the new image
             $data['image'] = $data['image']->store('avatar','public');
-
-            // If the image uploaded successfully
-            if ($data['image'] != Config::get('constants.default_image')) {
-                // Delete the old image
-                File::delete(url('/') . '/' . $user->image);
-            } else {
-                $data['image'] = $user->image;
-            }
         } else {
             // Use old image
             $data['image'] = $user->image;
