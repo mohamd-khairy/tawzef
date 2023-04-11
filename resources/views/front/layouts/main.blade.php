@@ -94,10 +94,8 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="{{ route('front.home') }}" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="{{ route('front.careers') }}" class="nav-item nav-link">Jobs</a>
                     <a href="{{ route('front.categories') }}" class="nav-item nav-link">Job Categories</a>
-                    <a href="contact.html" class="nav-item nav-link active">Contact</a>
                 </div>
                 @if (auth()->check())
                     <div class="nav-item dropdown">
@@ -120,11 +118,8 @@
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
-                <div class="row g-5">
+                {{-- <div class="row g-5">
                     <div class="col-lg-4 col-md-6">
-                        <h5 class="text-white mb-4">Company</h5>
-                        <a class="btn btn-link text-white-50" href="">About Us</a>
-                        <a class="btn btn-link text-white-50" href="">Contact Us</a>
                         <a class="btn btn-link text-white-50" href="">Our Services</a>
                         <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
                         <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
@@ -155,7 +150,7 @@
                             <button type="button"
                                 class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

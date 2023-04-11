@@ -35,7 +35,7 @@
                         </div>
                     @endforeach
 
-                    <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>
+                    <a class="btn btn-primary py-3 px-5" href="{{ route('front.careers') }}">Browse More Jobs</a>
                 </div>
 
             </div>
