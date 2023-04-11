@@ -193,7 +193,8 @@ Route::group(
              * CAREERS
              *************************************************************************/
             Route::get('/careers', 'CareersController@index')->name('front.careers');
-            Route::get('/careers/{id}/{slug?}', 'CareersController@show')->name('front.careerSingle');
+            Route::get('/careers/{id}', 'CareersController@show')->name('front.careerSingle');
+            Route::post('/careers/apply', 'CareersController@apply')->name('front.careerApply');
 
             Route::get('/categories', 'CareersController@categories')->name('front.categories');
 
@@ -209,7 +210,7 @@ Route::group(
              * USER PROFILE
              *************************************************************************/
             Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'profile'], function () {
-                Route::get('/info', 'UsersController@index')->name('front.profile.info');
+                Route::get('/info', 'UsersController@index')->name('front.profile');
                 Route::post('/update', 'UsersController@update')->name('front.users.update');
             });
         });

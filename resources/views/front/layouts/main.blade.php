@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
         rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -30,9 +31,45 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+    <style>
+        #notification {
+            position: fixed;
+            top: 30%;
+            right: 7px;
+            width: 20%;
+            z-index: 10000;
+            text-align: center;
+            font-weight: normal;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background-color: red;
+            padding: 1rem;
+            opacity: 0.7
+        }
+
+        #notification span.dismiss {
+            border: none;
+            padding: 0 5px;
+            cursor: pointer;
+            float: right;
+            margin-right: 10px;
+        }
+
+        #notification a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="notification" style="display: none;">
+        <span class="dismiss"><a title="{{ trans('main.dismiss_notification') }}">x</a></span>
+        <span class="messages"></span>
+    </div>
+
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
         <div id="spinner"
@@ -46,7 +83,8 @@
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="{{ route('front.home') }}" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+            <a href="{{ route('front.home') }}"
+                class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <h1 class="m-0 text-primary">JobEntry</h1>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
@@ -61,8 +99,20 @@
                     <a href="{{ route('front.categories') }}" class="nav-item nav-link">Job Categories</a>
                     <a href="contact.html" class="nav-item nav-link active">Contact</a>
                 </div>
-                <a href="{{ route('front.login') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login<i
-                        class="fa fa-arrow-right ms-3"></i></a>
+                @if (auth()->check())
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown">{{ auth()->user()->full_name }}</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="{{ route('front.profile') }}" class="dropdown-item">Profile</a>
+                            <a href="{{ route('logoutGetRequest') }}" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ route('front.login') }}"
+                        class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login<i
+                            class="fa fa-arrow-right ms-3"></i></a>
+                @endif
             </div>
         </nav>
         <!-- Navbar End -->
@@ -124,9 +174,17 @@
     <script src="{{ asset('front/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('front/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('front/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="http://parsleyjs.org/dist/parsley.js"></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('front/js/main.js') }}"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
     @stack('scripts')
 </body>
 

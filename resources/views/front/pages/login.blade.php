@@ -1,18 +1,20 @@
 @extends('front.layouts.main')
 
 @section('content')
-    <nav aria-label="breadcrumb">
-        <div class="container-fluid">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('front.home') }}">{{ __('main.home_title') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('auth.login') }}</li>
-            </ol>
+
+    <div class="container-xxl py-5 bg-dark page-header mb-5">
+        <div class="container my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Login</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb text-uppercase">
+                    <li class="breadcrumb-item"><a href="{{ route('front.home') }}">Home</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Login</li>
+                </ol>
+            </nav>
         </div>
-    </nav>
-    <div id="notification" style="display: none;">
-        <span class="dismiss"><a title="{{ trans('main.dismiss_notification') }}">x</a></span>
-        <span class="messages"></span>
     </div>
+    <!-- Header End -->
+
     <main class="main-content">
 
         <section class="loginform-page py-5">

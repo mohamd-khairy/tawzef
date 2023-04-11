@@ -1,5 +1,18 @@
 @extends('front.layouts.main')
 @section('content')
+        <!-- Header End -->
+        <div class="container-xxl py-5 bg-dark page-header mb-5">
+            <div class="container my-5 pt-5 pb-4">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Jobs</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb text-uppercase">
+                        <li class="breadcrumb-item"><a href="{{ route('front.home') }}">Home</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Jobs</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- Header End -->
     <!-- Jobs Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -29,8 +42,8 @@
                                         <div class="d-flex mb-3">
                                             {{-- <a class="btn btn-light btn-square me-3" href=""><i
                                                 class="far fa-heart text-primary"></i></a> --}}
-                                            <a class="btn btn-primary" href="">Apply Now</a>
-                                        </div>
+                                                <a class="btn btn-primary" href="{{ route('front.careerSingle',['id' => $career->id]) }}">Apply Now</a>
+                                            </div>
                                         {{-- <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
                                         Line: 01 Jan,
                                         2045</small> --}}

@@ -55,6 +55,10 @@ Route::group(
                     Route::group(['prefix' => 'store'], function() {
                         Route::post('/', 'CareersController@store')->name('careers.store');
                     });
+                    Route::post('frontupdate', 'CareersController@update')->name('careers.edit');
+
+                    Route::post('frontdelete', 'CareersController@delete')->name('careers.destroy');
+
                 });
             });
         });

@@ -119,9 +119,9 @@ class AuthController extends Controller
         if (Auth::user()->group && !in_array(Auth::user()->group->slug, ['parties-customers', 'individual-customers', 'offices'])) {
             $redirect_to = route('home');
         } elseif (Auth::user()->group && in_array(Auth::user()->group->slug, ['individual-customers', 'parties-customers'])) {
-            $redirect_to = route('front.customers.dashboard');
+            $redirect_to = route('front.profile');
         } elseif (Auth::user()->group && in_array(Auth::user()->group->slug, ['offices'])) {
-            $redirect_to = route('front.offices.dashboard');
+            $redirect_to = route('front.profile');
         }
 
 
