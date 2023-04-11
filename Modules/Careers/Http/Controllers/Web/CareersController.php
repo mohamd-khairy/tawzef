@@ -24,6 +24,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Yajra\Datatables\Datatables;
 use App\Language;
+use Modules\Categories\Category;
 
 class CareersController extends Controller
 {
@@ -31,7 +32,7 @@ class CareersController extends Controller
      * Store career
      *
      * @param  [integer] number_of_available_vacancies
-     * @param  [array] translations 
+     * @param  [array] translations
      * @return [json] ServiceResponse object
      */
     public function store(CreateCareerRequest $request, CreateCareerAction $action)
@@ -52,7 +53,7 @@ class CareersController extends Controller
      *
      * @param  [integer] id
      * @param  [integer] number_of_available_vacancies
-     * @param  [array] translations 
+     * @param  [array] translations
      * @return [json] ServiceResponse object
      */
     public function update(UpdateCareerRequest $request, UpdateCareerAction $action)
@@ -102,14 +103,10 @@ class CareersController extends Controller
             $careers = $action->execute($auth_user, $request);
 
             return Datatables::of($careers)
-                ->addColumn('value', function ($career) {
-                    return $career->value;
+                ->addColumn('title', function ($career) {
+                    return $career->title;
                 })
-                ->filterColumn('value', function($query, $keyword) {
-                    $query->whereHas('translations', function($translation) use ($keyword) {
-                        $translation->where('title', 'like', '%'.$keyword.'%');
-                    });
-                })
+
                 ->addColumn('created_at', function ($career) {
                     return $career->created_at->toDateTimeString();
                 })
@@ -141,10 +138,11 @@ class CareersController extends Controller
 
         // Get the languages
         $languages = Language::all();
+        $categories = Category::all();
 
         $blade_name = ($request->ajax() ? 'create-partial' : 'create'); // Handle Partial Return
 
-        return view('careers::careers.' . $blade_name, compact('languages'), []);
+        return view('careers::careers.' . $blade_name, compact('languages','categories'), []);
     }
 
     public function createCareerModal(Request $request)
@@ -154,8 +152,9 @@ class CareersController extends Controller
 
         // Get the languages
         $languages = Language::all();
+        $categories = Category::all();
 
-        return view('careers::careers.create', compact('languages'), [])->render();
+        return view('careers::careers.create', compact('languages','categories'), [])->render();
     }
 
     public function UpdateCareerModal(Request $request, $id = null)
@@ -165,6 +164,7 @@ class CareersController extends Controller
 
         $career = Career::find($id);
 
+        $categories = Category::all();
         // If career does not exist, return error div
         if (!$career) {
             $error = Lang::get('careers::career.career_not_found_or_you_are_not_authorized_to_edit_the_career');
@@ -174,7 +174,7 @@ class CareersController extends Controller
         // Get the languages
         $languages = Language::all();
 
-        return view('careers::careers.modals.update', compact('career', 'languages'), [])->render();
+        return view('careers::careers.modals.update', compact('career', 'languages','categories'), [])->render();
     }
 
     public function application(Request $request)

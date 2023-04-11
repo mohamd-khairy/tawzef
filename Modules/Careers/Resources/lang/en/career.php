@@ -103,5 +103,8 @@ return [
     'enter_description' => 'Enter description',
     'description_max_is_4294967295_characters_long' => 'Description max is 4294967295 characters long',
     'please_enter_the_number_of_available_vacancies' => 'Please enter the number of available vacancies',
-
+    'title_en' => 'Title En',
+    'title_ar' => 'Title Ar',
+    'description_en' => 'Description En',
+    'description_ar' => 'Description Ar',
 ];

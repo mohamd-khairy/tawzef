@@ -36,13 +36,10 @@ class DatabaseSeeder extends Seeder
         $this->call(\Modules\Settings\Database\Seeders\SettingsDatabaseSeeder::class);
         $this->call(\Modules\ContactUS\Database\Seeders\ContactUSDatabaseSeeder::class);
         $this->call(\Modules\Attachments\Database\Seeders\AttachmentsDatabaseSeeder::class);
-        $this->call(\Modules\Locations\Database\Seeders\LocationsDatabaseSeeder::class);
-        $this->call(\Modules\SEO\Database\Seeders\SeoDatabaseSeeder::class);
         $this->call(\Modules\CMS\Database\Seeders\CMSModuleModuleSeeder::class);
-        $this->call(\Modules\Products\Database\Seeders\ProductsDatabaseSeeder::class);
-        $this->call(\Modules\Ads\Database\Seeders\AdsDatabaseSeeder::class);
-        $this->call(\Modules\Orders\Database\Seeders\OrdersDatabaseSeeder::class);
         $this->call(\Modules\CMS\Database\Seeders\CMSDatabaseSeeder::class);
+        $this->call(\Modules\Careers\Database\Seeders\CareersDatabaseSeeder::class);
+        $this->call(\Modules\Categories\Database\Seeders\CategoriesDatabaseSeeder::class);
 
 
         DBHelpers::setFKCheckOn();

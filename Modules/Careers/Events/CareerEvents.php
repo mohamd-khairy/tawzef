@@ -29,7 +29,6 @@ class CareerEvents
 
     private function clearCaches(Career $career)
     {
-        $supported_locales = LaravelLocalization::getSupportedLocales();
     }
 
     public function careerCreated(Career $career)

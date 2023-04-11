@@ -19,16 +19,12 @@ class CreateCareerRequest extends FormRequest
     {
 
         $array = array();
-        // $array['number_of_available_vacancies'] = 'required|numeric';
-        $array['name'] = 'required|string|max:191';
-        $array['email'] = "required|email|string|max:191";
-        $array['phone'] = array('required', 'regex:/((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))/');
-        $array['address'] = "required|string|max:4294967295";
-        $array['years_of_experience'] = "required|string|max:65";
-        $array['gender'] = "required|string|max:4294967295";
-        $array['services'] = 'required|array';
-        $array['resume'] = 'required|max:102400|mimetypes:pdf,application/pdf,doc,application/msword,docx';
-        $array['message'] = 'required|string|max:4294967295';
+        $array['number_of_available_vacancies'] = 'required|numeric';
+        $array['title_en'] = 'required|string|max:191';
+        $array['description_en'] = 'required|string|max:66595';
+        $array['title_ar'] = 'required|string|max:191';
+        $array['description_ar'] = 'required|string|max:66595';
+        $array['is_featured'] = ['nullable', Rule::in(['on', 'off'])];
 
         return $array;
     }

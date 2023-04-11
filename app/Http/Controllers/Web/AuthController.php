@@ -96,7 +96,6 @@ class AuthController extends Controller
                 ]
             ];
             return response()->json($resp, 401);
-            // return response()->json(['error' => Lang::get('auth.incorrect_username_or_password_please_try_again')], 401);
         }
 
         // If email is not verified and user is not admin
@@ -114,13 +113,9 @@ class AuthController extends Controller
             return response()->json($resp, 401);
         }
 
-    
-        // Update user last_login_at and last_login_ip && timezone
+
         $user = Auth::user();
-        // $user->last_login_at = Carbon::now();
-        // $user->last_login_ip = request()->ip();
-        // $user->timezone = $request->input('timezone') ? $request->input('timezone') : $user->timezone;
-        // $user->save();
+
         if (Auth::user()->group && !in_array(Auth::user()->group->slug, ['parties-customers', 'individual-customers', 'offices'])) {
             $redirect_to = route('home');
         } elseif (Auth::user()->group && in_array(Auth::user()->group->slug, ['individual-customers', 'parties-customers'])) {
@@ -129,24 +124,7 @@ class AuthController extends Controller
             $redirect_to = route('front.offices.dashboard');
         }
 
-        // if (Auth::user()->group && !in_array(Auth::user()->group->slug, ['brokers', 'developers', 'owners', 'buyers'])) {
-        //     $redirect_to = route('home');
-        // } elseif (Auth::user()->group && in_array(Auth::user()->group->slug, ['brokers', 'developers', 'owners', 'buyers'])) {
-        //     $redirect_to = route('front.home');
-        // } else {
-        //     Auth::logout();
 
-        //     $resp = new ServiceResponse;
-        //     $resp->message = trans('auth.error_has_occurred_please_contact_the_administrator');
-        //     $resp->status = false;
-        //     $resp->errors = [
-        //         [
-        //             'message' => trans('auth.error_has_occurred_please_contact_the_administrator')
-        //         ]
-        //     ];
-        //     return response()->json($resp, 401);
-        // }
-        
         $resp = new ServiceResponse;
         $resp->message = Lang::get('auth.logged_in_successfully');
         $resp->status = true;

@@ -43,19 +43,20 @@ class Career extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name',
-        'email',
-        'phone',
-        'address',
-        'years_of_experience',
-        'gender',
-        'services',
-        'resume',
-        'message', 'created_at', 'updated_at'
+        'id',
+        'title_en',
+        'description_en',
+        'title_ar',
+        'description_ar',
+        'location',
+        'type',
+        'category_id', 'number_of_available_vacancies', 'created_at', 'updated_at'
     ];
 
     // Deleting translations manually to overcome laravel issue with composite primary key
     protected $softCascade = [];
+
+    protected $appends = ['title'];
 
     protected $casts = [
         'services' => 'array'
@@ -80,7 +81,11 @@ class Career extends Model
         return "Career #" . $this->id . " has been {$eventName}";
     }
 
-    // Handle IS Featured 
+    public function getTitleAttribute()
+    {
+        return app()->getLocale() == 'en' ? $this->title_en : $this->title_ar;
+    }
+    // Handle IS Featured
     public function setIsFeaturedAttribute($value)
     {
         if ($value === "on") {

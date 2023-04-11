@@ -15,6 +15,10 @@ class AddCareersNumberOfAvailableVacancies extends Migration
     {
         Schema::table('careers', function (Blueprint $table) {
             $table->integer('number_of_available_vacancies')->nullable();
+            $table->string('location')->nullable();
+            $table->string('type')->nullable();
+            $table->string('salary')->nullable();
+
         });
     }
 
@@ -27,6 +31,9 @@ class AddCareersNumberOfAvailableVacancies extends Migration
     {
         Schema::table('careers', function (Blueprint $table) {
             $table->dropColumn('number_of_available_vacancies');
+            $table->dropColumn('location');
+            $table->dropColumn('type');
+            $table->dropColumn('salary');
         });
     }
 }

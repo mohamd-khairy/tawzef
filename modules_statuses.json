@@ -12,5 +12,6 @@
     "SEO": true,
     "Careers": true,
     "Tags": true,
-    "CMS": true
+    "CMS": true,
+    "Categories":true
 }

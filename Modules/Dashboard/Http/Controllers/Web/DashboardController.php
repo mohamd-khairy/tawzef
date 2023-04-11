@@ -20,15 +20,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // Get Active Users Count
-
-        $blogs_count = Blog::count();
-
          // Return the response
-        return view('dashboard::dashboard', compact(
-
-            'blogs_count',
-
-        ));
+        return view('dashboard::dashboard');
     }
 }

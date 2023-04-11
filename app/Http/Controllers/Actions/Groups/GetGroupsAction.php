@@ -16,7 +16,7 @@ class GetGroupsAction
 
     public function execute()
     {
-        $groups = Group::whereIn('slug',['brokers', 'developers', 'owners', 'buyers'])->get();
+        $groups = Group::whereIn('slug',['customers','offices'])->get();
 
         return  GroupResource::collection($groups);
     }

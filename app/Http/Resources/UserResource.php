@@ -19,9 +19,7 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        if (!empty($this->services)) {
-            $min_price = $this->services()->min('price');
-        }
+
         return [
             'id' => $this->id,
             'group' => $this->group,
@@ -36,17 +34,8 @@ class UserResource extends JsonResource
             'last_login_ip' => $this->last_login_ip,
             'connection_id' => $this->connection_id,
             'timezone' => $this->timezone,
-            'min_price' => $min_price,
             'address'  => $this->address,
             'nick_name'  => $this->nick_name,
-            'agency_rating'  => $this->agency_rating,
-            'representative_name'  => $this->representative_name,
-            'bank_account_number'  => $this->bank_account_number,
-            'tax_number'  => $this->tax_number,
-            'accounting_email' => $this->accounting_email,
-            'job_title'  => $this->job_title,
-            'work_type'  => $this->work_type,
-            'services' => count($this->services) ? ServiceResource::collection($this->services) : [],
             // 'last_seen' => ($this->lastSeen() && auth()->user()) ? Carbon::createFromFormat('Y-m-d H:i:s', $this->lastSeen())->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->toDateTimeString() : null,
             'creator' => $this->creator ? new UserMinimalResource($this->creator) : null,
             'editor' => $this->editor ? new UserMinimalResource($this->editor) : null,
@@ -55,7 +44,6 @@ class UserResource extends JsonResource
             'updated_at' => ($this->updated_at && auth()->user()) ? $this->updated_at->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->toDateTimeString() : null,
             'created_since' => ($this->created_at && auth()->user()) ? $this->created_at->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->diffForHumans() : null,
             'updated_since' => ($this->updated_at && auth()->user()) ? $this->updated_at->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->diffForHumans() : null,
-            'rates' => !is_null($this->ratings) && !empty($this->ratings) ?  RatingResource::collection($this->ratings) : [],
         ];
     }
 }

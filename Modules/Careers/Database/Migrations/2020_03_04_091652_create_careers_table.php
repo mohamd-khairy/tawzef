@@ -15,6 +15,11 @@ class CreateCareersTable extends Migration
     {
         Schema::create('careers', function (Blueprint $table) {
             $table->integerIncrements('id');
+            $table->string('title_en');
+            $table->mediumText('description_en');
+            $table->string('title_ar');
+            $table->mediumText('description_ar');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
             $table->softDeletes();
         });

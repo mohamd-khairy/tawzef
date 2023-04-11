@@ -136,7 +136,7 @@ Route::group(
              *************************************************************************/
             Route::get('login', 'AuthController@showLoginForm');
 
-            Route::get('sssssss',function(){
+            Route::get('sssssss', function () {
                 return view('front.pages.order-user-mail');
             });
             /*************************************************************************
@@ -161,9 +161,9 @@ Route::group(
              * HOME
              *************************************************************************/
             Route::get('/', 'HomeController@index')->name('front.home');
-            Route::get('pages','HomeController@pages')->name('staticPages');
-            Route::get('setLang/{lang}','HomeController@setLocale')->name('setLang');
-            Route::get('getLocation','HomeController@locationSearch')->name('locations.find');
+            Route::get('pages', 'HomeController@pages')->name('staticPages');
+            Route::get('setLang/{lang}', 'HomeController@setLocale')->name('setLang');
+            Route::get('getLocation', 'HomeController@locationSearch')->name('locations.find');
             /*************************************************************************
              * How Works
              *************************************************************************/
@@ -195,6 +195,8 @@ Route::group(
             Route::get('/careers', 'CareersController@index')->name('front.careers');
             Route::get('/careers/{id}/{slug?}', 'CareersController@show')->name('front.careerSingle');
 
+            Route::get('/categories', 'CareersController@categories')->name('front.categories');
+
             /*************************************************************************
              * CONTACT US
              *************************************************************************/
@@ -204,15 +206,12 @@ Route::group(
             Route::get('/subscribe', 'ContactUsController@subForm')->name('front.subscribe.view');
 
             /*************************************************************************
-             * BLOG
+             * USER PROFILE
              *************************************************************************/
-            Route::get('/blogs/{category_id?}', 'BlogsController@index')->name('front.blogs');
-            Route::get('/blog/{id}-{slug?}', 'BlogsController@show')->name('front.single_blog');
-
-            /*************************************************************************
-             * SERVICES
-             *************************************************************************/
-            Route::get('/services/{id}', 'ServicesController@show')->name('front.services');
+            Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'profile'], function () {
+                Route::get('/info', 'UsersController@index')->name('front.profile.info');
+                Route::post('/update', 'UsersController@update')->name('front.users.update');
+            });
         });
 
         /**************************************************************************
@@ -222,6 +221,7 @@ Route::group(
             Route::group(['namespace' => 'Front'], function () {
                 Route::get('login', 'HomeController@login')->name('front.login');
             });
+
             Route::post('login', 'AuthController@login')->name('front.login');
 
             Route::post('register', 'AuthController@register')->name('register');

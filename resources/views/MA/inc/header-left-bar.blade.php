@@ -59,20 +59,34 @@
 
                             @haspermission('index-privacies')
                                 <li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a
-                                        href="{{route('privacies.modals.update',['id' => 1])}}" class="kt-menu__link bg-none "><i
+                                        href="{{ route('privacies.modals.update', ['id' => 1]) }}"
+                                        class="kt-menu__link bg-none "><i
                                             class="kt-menu__link-icon flaticon-map-location"><span></span></i><span
                                             class="kt-menu__link-text">{{ __('cms::cms.terms') }}</span></a>
                                 </li>
                                 <li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a
-                                    href="{{route('privacies.modals.update',['id' => 2])}}" class="kt-menu__link bg-none "><i
-                                        class="kt-menu__link-icon flaticon-map-location"><span></span></i><span
-                                        class="kt-menu__link-text">{{ __('cms::cms.return_policy') }}</span></a>
-                            </li>
+                                        href="{{ route('privacies.modals.update', ['id' => 2]) }}"
+                                        class="kt-menu__link bg-none "><i
+                                            class="kt-menu__link-icon flaticon-map-location"><span></span></i><span
+                                            class="kt-menu__link-text">{{ __('cms::cms.return_policy') }}</span></a>
+                                </li>
                             @endhaspermission
                         </ul>
                     </div>
                 </li>
-
+                @haspermission('index-careers')
+                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('careers.index') }}"
+                            class="kt-menu__link bg-none "><i
+                                class="kt-menu__link-icon flaticon-photo-camera"><span></span></i><span
+                                class="kt-menu__link-text">{{ trans('careers::career.careers') }}</span></a>
+                    </li>
+                @endhaspermission
+                @haspermission('index-categories')
+                <li class="kt-menu__item" aria-haspopup="true"><a href="{{ route('categories.index') }}"
+                        class="kt-menu__link bg-none ">
+                        <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                            class="kt-menu__link-text">{{ __('categories::category.category') }}</span></a></li>
+            @endhaspermission
                 @stack('header-menu-last')
                 <li id="header_menu_last" class="hidden kt-menu__item  kt-menu__item--submenu kt-menu__item--rel"
                     data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;"

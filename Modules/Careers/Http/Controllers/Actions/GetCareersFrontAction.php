@@ -16,23 +16,10 @@ class GetCareersFrontAction
     public function execute()
     {
         // Get Careers
-        $careers =  Career::paginate(8);
+        $careers =  Career::all();
 
         // Transform result
         $careers = CareerResource::collection($careers);
-
-        $careers = new LengthAwarePaginator(
-            json_decode(json_encode($careers)),
-            $careers->total(),
-            $careers->perPage(),
-            $careers->currentPage(),
-            [
-                'path' => \Request::url(),
-                'query' => [
-                    'page' => $careers->currentPage()
-                ]
-            ]
-        );
 
         // Return the result
         return $careers;

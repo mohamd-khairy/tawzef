@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Web\Front;
 
+use App\Http\Controllers\Actions\Groups\GetGroupsAction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Careers\Career;
+use Modules\Categories\Category;
 use Modules\Products\Product;
 use Modules\Settings\MainSlider;
 
@@ -12,15 +15,19 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = MainSlider::all();
-        return view('front.pages.home',compact('sliders'));
+        $categories = Category::take(8)->get();
+        $careers = Career::take(8)->get();
+
+        return view('front.pages.home',compact('sliders','categories','careers'));
     }
 
-    public function get_products_ajax(Request $request)
+    public function login()
     {
-       $products = Product::where(['category_id'=>$request->category_id,'brand_id' => $request->brand_id])->take(8)->get();
-       $category_id=$request->category_id;
-       $brand_id = $request->brand_id;
+        // Get Groups
+        $action =  new GetGroupsAction;
+        $groups = json_decode(json_encode($action->execute()));
 
-       return view('front.partials.home.brands-ajax',compact('products','category_id','brand_id'))->render();
+        return view('front.pages.login', compact('groups'));
     }
+
 }

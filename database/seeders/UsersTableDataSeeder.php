@@ -23,7 +23,7 @@ class UsersTableDataSeeder extends Seeder
             'full_name' => 'Technical Support',
             'image' => 'front/img/placeholder.svg',
             'username' => 'technical_support',
-            'email' => 'technical_support@e-commerce.com',
+            'email' => 'technical_support@job.com',
             'password' => '$2y$10$H2Vof82ZT3GfX/86sDKy0uXImjiEIiM56DEzKEg/W0k/K2pfZrU3e',
             'mobile_number' => '01207395400',
             'created_at' => Carbon::now()
@@ -36,7 +36,7 @@ class UsersTableDataSeeder extends Seeder
             'full_name' => 'General Manager',
             'image' => 'front/img/placeholder.svg',
             'username' => 'general_manager',
-            'email' => 'general_manager@e-commerce.com',
+            'email' => 'general_manager@job.com',
             'password' => '$2y$10$H2Vof82ZT3GfX/86sDKy0uXImjiEIiM56DEzKEg/W0k/K2pfZrU3e',
             'mobile_number' => '000000000000',
             'created_at' => Carbon::now()

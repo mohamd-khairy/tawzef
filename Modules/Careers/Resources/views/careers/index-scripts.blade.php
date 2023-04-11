@@ -48,7 +48,7 @@
             },
             columns: [
                 {data: 'id', orderable: true, searchable: true},
-                {data: 'value', orderable: true, searchable: true},
+                {data: 'title', orderable: true, searchable: true},
                 {data: 'created_at', orderable: true, searchable: true},
                 {data: 'last_updated_at', orderable: true, searchable: true},
             ],
@@ -64,7 +64,7 @@
                     targets: 1,
                     title: '{{trans('careers::career.title')}}',
                     render: function(data, type, full, meta) {
-                        return full.value;
+                        return full.title;
                     },
                 },
                 {
