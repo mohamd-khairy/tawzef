@@ -20,12 +20,10 @@ class RedirectIfAuthenticated
     {
 
         if (Auth::check()) {
-            if (Auth::user()->group && !in_array(Auth::user()->group->slug, ['parties-customers', 'individual-customers', 'offices'])) {
+            if (Auth::user()->group && in_array(Auth::user()->group->slug, ['offices','customers'])) {
+                return redirect()->route('front.home');
+            }else{
                 return redirect()->route('home');
-            } elseif (Auth::user()->group && in_array(Auth::user()->group->slug, ['individual-customers', 'parties-customers'])) {
-                return redirect()->route('front.home');
-            } elseif (Auth::user()->group && in_array(Auth::user()->group->slug, ['offices'])) {
-                return redirect()->route('front.home');
             }
         }
 

@@ -10,7 +10,7 @@
         <div class="row">
             <h3 class="m-5">{{__('main.page_404')}}</h3>
             <div class="col-12">
-                <img class="w-100" src="{{URL::asset('front/img/placeholder.svg')}}" alt="placeholder">
+                <img class="w-100" src="{{URL::asset('front/assets/img/1.png')}}" alt="placeholder">
             </div>
         </div>
     </div> <!-- ./ container -->

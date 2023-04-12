@@ -36,6 +36,8 @@ class UsersController extends Controller
         $groups = json_decode(json_encode($action->execute()));
         if (auth()->user()->group_id == 4) {
             $careers = Career::where('created_by', auth()->user()->id)->get();
+        }else{
+            $careers = null;
         }
         $categories = Category::all();
 
@@ -48,7 +50,8 @@ class UsersController extends Controller
             $applications = $applications->where('applied_by', auth()->user()->id);
         }
 
-        $applications = $applications->get();
+        $applications = $applications->with('career')->get();
+
         return view('front.pages.profile', compact('user', 'careers', 'categories', 'applications'));
     }
 

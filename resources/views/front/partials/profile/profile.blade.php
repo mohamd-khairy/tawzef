@@ -158,7 +158,7 @@
 
                 </div>
             </div>
-
+            @if($careers)
             <div id="MyJobs" class="tabcontent" style="display: none;">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -343,6 +343,7 @@
                     </div>
                 @endforeach
             </div>
+            @endif
 
             <div id="MyApplications" class="tabcontent" style="display: none;">
                 @foreach ($applications as $application)
@@ -350,7 +351,7 @@
                         <div class="row g-4">
                             <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                 <img class="flex-shrink-0 img-fluid border rounded"
-                                            src="{{ asset('storage/'.$career->creator->image) }}" alt=""
+                                            src="{{ asset('storage/'.$application->career->creator->image) }}" alt=""
                                     style="width: 80px; height: 80px;">
                                 <div class="text-start ps-4">
                                     <h5 class="mb-3">{{ $application->career->title }}</h5>

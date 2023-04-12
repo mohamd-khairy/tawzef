@@ -22,7 +22,7 @@ use Spatie\MediaLibrary\File;
 use Redis;
 
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use SoftDeletes, SoftCascadeTrait, HasApiTokens, Notifiable, LogsActivity, CausesActivity, Userstamps;
 

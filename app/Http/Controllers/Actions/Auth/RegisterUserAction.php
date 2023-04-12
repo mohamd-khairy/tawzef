@@ -21,7 +21,7 @@ class RegisterUserAction
 		if (isset($data['image'])) {
 			$data['image'] = Utilities::storeFile($data['image'], 'storage/profile_images', Config::get('constants.default_image'));
 		} else {
-			$data['image'] = 'front/img/placeholder.svg';
+			$data['image'] = 'front/assets/img/1.png';
 		}
 		if (isset($data['commercial_registry'])) {
 			$data['commercial_registry'] = Utilities::storeFile($data['commercial_registry'], 'storage/profile_commercial_registries', 'public');

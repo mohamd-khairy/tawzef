@@ -103,7 +103,7 @@
                         return `
                             <div class="m-card-user m-card-user--sm">
                                 <div class="m-card-user__pic">
-                                    <img style="height:50% !important;width:50% !important;" src="{{url('/')}}/` + full.image + `" class="m--img-rounded m--marginless" alt="{{trans('users.image')}}">
+                                    <img style="height:50% !important;width:50% !important;" src="{{url('/')}}/storage/` + full.image + `" class="m--img-rounded m--marginless" alt="{{trans('users.image')}}">
                                 </div>
                             </div>`;
                     },
@@ -251,7 +251,7 @@
                                         </div>
                                 </span>`;
                         }
-                        
+
                     },
                 },
             ],
