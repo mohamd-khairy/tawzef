@@ -24,6 +24,7 @@ Route::group(
                 Route::group([], function () {
                     Route::group(['middleware' => ['hasPermission:index-careers']], function() {
                         Route::match(['GET', 'POST'], 'index', 'CareersController@index')->name('careers.index');
+                        Route::match(['GET', 'POST'], 'applied', 'CareersController@applied')->name('careers.applied');
                     });
                     Route::group(['middleware' => ['hasPermission:create-career']], function() {
                         Route::post('store', 'CareersController@store')->name('careers.store');

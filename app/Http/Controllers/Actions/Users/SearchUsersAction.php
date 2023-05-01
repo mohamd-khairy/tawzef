@@ -181,6 +181,6 @@ class SearchUsersAction
         //     $user->load('group');
         // }
 
-        return $users;
+        return $users->where('id','!=',1);
     }
 }

@@ -39,16 +39,6 @@ class GroupsTableDataSeeder extends Seeder
                 'created_at' => Carbon::now()
             ],
 
-            // customer Group
-            [
-                'id' => 3,
-                'parent_id' => 1,
-                'name' => 'Parties Customers',
-                'slug' => 'parties-customers',
-                'description' => 'Parties Customers Group',
-                'is_hidden' => 0,
-                'created_at' => Carbon::now()
-            ],
 
             // offices Group
             [
@@ -65,9 +55,9 @@ class GroupsTableDataSeeder extends Seeder
             [
                 'id' => 5,
                 'parent_id' => 1,
-                'name' => 'Individual Customers',
-                'slug' => 'individual-customers',
-                'description' => 'Individual Customers Group',
+                'name' => 'Customers',
+                'slug' => 'customers',
+                'description' => 'Customers Group',
                 'is_hidden' => 0,
                 'created_at' => Carbon::now()
             ],

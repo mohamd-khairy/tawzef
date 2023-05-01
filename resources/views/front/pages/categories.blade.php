@@ -21,7 +21,7 @@
             <div class="row g-4">
                 @foreach ($categories as  $category)
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.{{ $loop->index +1 }}s">
-                    <a class="cat-item rounded p-4" href="">
+                    <a class="cat-item rounded p-4" href="{{ route('front.careers',['category_id' => $category->id]) }}">
                         {{-- <i class="fa fa-3x fa-mail-bulk text-primary mb-4"></i> --}}
                         <h6 class="mb-3">{{ $category->title }}</h6>
                         <p class="mb-0">{{ $category->careers()->count() }} Vacancy</p>

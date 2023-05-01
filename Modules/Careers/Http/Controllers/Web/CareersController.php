@@ -24,6 +24,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Yajra\Datatables\Datatables;
 use App\Language;
+use Modules\Careers\CareerApply;
 use Modules\Categories\Category;
 
 class CareersController extends Controller
@@ -142,7 +143,7 @@ class CareersController extends Controller
 
         $blade_name = ($request->ajax() ? 'create-partial' : 'create'); // Handle Partial Return
 
-        return view('careers::careers.' . $blade_name, compact('languages','categories'), []);
+        return view('careers::careers.' . $blade_name, compact('languages', 'categories'), []);
     }
 
     public function createCareerModal(Request $request)
@@ -154,7 +155,7 @@ class CareersController extends Controller
         $languages = Language::all();
         $categories = Category::all();
 
-        return view('careers::careers.create', compact('languages','categories'), [])->render();
+        return view('careers::careers.create', compact('languages', 'categories'), [])->render();
     }
 
     public function UpdateCareerModal(Request $request, $id = null)
@@ -174,11 +175,39 @@ class CareersController extends Controller
         // Get the languages
         $languages = Language::all();
 
-        return view('careers::careers.modals.update', compact('career', 'languages','categories'), [])->render();
+        return view('careers::careers.modals.update', compact('career', 'languages', 'categories'), [])->render();
     }
 
     public function application(Request $request)
     {
+        // Auth user
+        $auth_user = Auth::user();
+
+        if ($request->isMethod('POST')) {
+            // Search the careers
+            $careers = new CareerApply();
+
+            return Datatables::of($careers)
+
+
+                ->addColumn('created_at', function ($career) {
+                    return $career->created_at->toDateTimeString();
+                })
+                ->addColumn('last_updated_at', function ($career) {
+                    return $career->updated_at->toDateTimeString();
+                })
+                ->orderColumn('created_at', function ($query, $order) {
+                    return  $query->orderBy('created_at', $order);
+                })
+                ->orderColumn('last_updated_at', function ($query, $order) {
+                    return  $query->orderBy('updated_at', $order);
+                })
+                ->make(true);
+        } else {
+            $blade_name = ($request->ajax() ? 'apply-career' : 'apply-career'); // Handle Partial Return
+
+            return view('careers::careers.' . $blade_name);
+        }
         return view('careers::careers.apply-career');
     }
 

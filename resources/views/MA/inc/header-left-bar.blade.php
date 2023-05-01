@@ -20,12 +20,12 @@
                                 class="kt-menu__link-icon flaticon2-user"><span></span></i><span
                                 class="kt-menu__link-text">{{ __('users.users') }}</span></a></li>
                 @endhaspermission
-                @haspermission('index-groups')
+                {{-- @haspermission('index-groups')
                     <li class="kt-menu__item" aria-haspopup="true"><a href="{{ route('groups.index') }}"
                             class="kt-menu__link bg-none "><i
                                 class="kt-menu__link-icon flaticon-users-1"><span></span></i><span
                                 class="kt-menu__link-text">{{ __('groups.groups') }}</span></a></li>
-                @endhaspermission
+                @endhaspermission --}}
 
                 @haspermission('index-settings-main-sliders')
                     <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('settings.main_sliders.index') }}"

@@ -43,10 +43,7 @@
                         <form action="{{route('categories.store')}}" method="POST" id="create_cat_form" enctype="multipart/form-data" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator" data-async data-callback="createcatCallback" data-parsley-validate>
                             @csrf
                             <div class="m-portlet__body">
-                                <div class="fancy-checkbox">
-                                    <input name="is_featured" id="is_featured" type="checkbox" class="form-control">
-                                    <label for="is_featured">{{__('categories::category.is_featured')}}</label>
-                                </div>
+
                                 <div class="form-group row">
                                     <div class="col-12 repeater">
                                         <div data-repeater-list="translations">

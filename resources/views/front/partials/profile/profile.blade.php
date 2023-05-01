@@ -178,8 +178,7 @@
                                 <a href="{{ route('front.careerSingle', ['id' => $career->id]) }}">
                                     <div class="text-start ps-4">
                                         <h5 class="mb-3">{{ $career->title }}</h5>
-                                        <span class="text-truncate me-3"><i
-                                                class="fa fa-map-marker-alt text-primary me-2"></i>{{ $career->location }}</span>
+                                        <span class="text-truncate me-3"><i class="fas fa-phone"></i>{{ $career->location }}</span>
                                         <span class="text-truncate me-3"><i
                                                 class="far fa-clock text-primary me-2"></i>{{ $career->type }}</span>
 
@@ -295,7 +294,7 @@
                                                                     data-parsley-required-message="{{ __('careers::career.please_enter_the_number_of_available_vacancies') }}" />
                                                             </div>
                                                             <div class="col-6">
-                                                                <label>{{ trans('main.location') }}</label>
+                                                                <label>{{ trans('main.phone') }}</label>
                                                                 <input name="location" class="form-control"
                                                                     value="{{ $career->location }}" type="text"
                                                                     placeholder="{{ trans('main.location') }}"
@@ -308,8 +307,7 @@
                                                                 <input name="type" class="form-control"
                                                                     value="{{ $career->type }}" type="text"
                                                                     placeholder="Type"
-                                                                    data-parsley-trigger="change focusout" required
-                                                                    data-parsley-required
+                                                                    data-parsley-trigger="change focusout"
                                                                     data-parsley-required-message="Type" />
                                                             </div>
                                                         </div>
@@ -466,7 +464,7 @@
                                     data-parsley-required-message="{{ __('careers::career.please_enter_the_number_of_available_vacancies') }}" />
                             </div>
                             <div class="col-6">
-                                <label>{{ trans('main.location') }}</label>
+                                <label>{{ trans('main.phone') }}</label>
                                 <input name="location" class="form-control" type="text"
                                     placeholder="{{ trans('main.location') }}"
                                     data-parsley-trigger="change focusout" required data-parsley-required
@@ -475,7 +473,7 @@
                             <div class="col-6">
                                 <label>Type</label>
                                 <input name="type" class="form-control" type="text" placeholder="type"
-                                    data-parsley-trigger="change focusout" required data-parsley-required
+                                    data-parsley-trigger="change focusout"
                                     data-parsley-required-message="type" />
                             </div>
                         </div>

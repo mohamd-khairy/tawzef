@@ -116,18 +116,18 @@
                                             data-parsley-required-message="{{ __('careers::career.please_enter_the_number_of_available_vacancies') }}" />
                                     </div>
                                     <div class="col-4">
-                                        <label>{{ trans('main.location') }}</label>
+                                        <label>{{ trans('main.phone') }}</label>
                                         <input name="location" class="form-control"
                                             type="text" placeholder="{{ trans('main.location') }}"
                                             data-parsley-trigger="change focusout" required data-parsley-required
                                             data-parsley-required-message="{{ trans('main.location') }}" />
                                     </div>
                                     <div class="col-4">
-                                        <label>{{ trans('blog::blog.type') }}</label>
+                                        <label>{{ trans('type') }}</label>
                                         <input name="type" class="form-control"
-                                            type="text" placeholder="{{ trans('blog::blog.type') }}"
-                                            data-parsley-trigger="change focusout" required data-parsley-required
-                                            data-parsley-required-message="{{ trans('blog::blog.type') }}" />
+                                            type="text" placeholder="{{ trans('type') }}"
+                                            data-parsley-trigger="change focusout"
+                                            data-parsley-required-message="{{ trans('type') }}" />
                                     </div>
                                 </div>
                             </div>

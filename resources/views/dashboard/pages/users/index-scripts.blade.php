@@ -208,11 +208,7 @@
                             || auth()->user()->hasPermission('update-user-permissions')
                             || auth()->user()->hasPermission('suspend-user'))
                             return `
-                            <span class="dropdown">
-                                <a href="#" class="btn m-btn m-btn--hover-brand m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="dropdown" aria-expanded="true">
-                                  <i class="la la-ellipsis-h"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
+
                                     @if (auth()->user()->hasPermission('update-user'))
                                     <a href="{{route('users.modals.update')}}" class="dropdown-item" data-toggle="modal" data-target="#vcxl_modal" data-path="{{route('users.modals.update')}}" data-title="{{trans('users.update_user')}}" data-id="`+full.id+`" data-modal-load>
                                         <span>
@@ -221,14 +217,7 @@
                                         </span>
                                     </a>
                                     @endif
-                                    @if (auth()->user()->hasPermission('update-user-permissions'))
-                                    <a href="{{route('users.modals.updatePermissions')}}" class="dropdown-item" data-toggle="modal" data-target="#vcxl_modal" data-path="{{route('users.modals.updatePermissions')}}" data-title="{{trans('users.update_user_permissions')}}" data-id="`+full.id+`" data-modal-load>
-                                        <span>
-                                            <i class="la la-leaf"></i>
-                                            <span>{{trans('users.update_user_permissions')}}</span>
-                                        </span>
-                                    </a>
-                                    @endif
+
                                     @if (auth()->user()->hasPermission('suspend-user'))
                                     <a href="{{route('users.modals.suspend')}}" class="dropdown-item" data-toggle="modal" data-target="#vcxl_modal" data-path="{{route('users.modals.suspend')}}" data-title="{{trans('users.suspend_user_account')}}" data-id="`+full.id+`" data-modal-load>
                                         <span>
@@ -237,8 +226,7 @@
                                         </span>
                                     </a>
                                     @endif
-                                </div>
-                            </span>`;
+                                `+`${delete_btn}`;
                         @endif
                         }else{
                             return `
