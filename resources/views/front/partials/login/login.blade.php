@@ -73,7 +73,7 @@
                     data-parsley-trigger="change focusout" data-parsley-errors-container="#who_error_container">
                     <option value=""></option>
                     @foreach ($groups as $group)
-                        <option value="{{ $group->id }}">{{ $group->slug == 'customers' ? __('main.users'  : $group->slug) }}</option>
+                        <option value="{{ $group->id }}">{{ $group->slug == 'customers' ? __('main.users') : $group->slug }}</option>
                     @endforeach
                 </select>
             </div>
