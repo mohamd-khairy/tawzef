@@ -24,7 +24,7 @@ class UsersTableDataSeeder extends Seeder
             'image' => 'front/assets/img/1.png',
             'username' => 'technical_support',
             'email' => 'technical_support@job.com',
-            'password' => '$2y$10$H2Vof82ZT3GfX/86sDKy0uXImjiEIiM56DEzKEg/W0k/K2pfZrU3e',
+            'password' => '$2y$10$knAqGkIf3aiOWHck1Nv2Ge3rwbGmbb226XGAZe0ngNpx2TIfeIjbS',
             'mobile_number' => '01207395400',
             'created_at' => Carbon::now()
         ]);
@@ -37,7 +37,7 @@ class UsersTableDataSeeder extends Seeder
             'image' => 'front/assets/img/1.png',
             'username' => 'general_manager',
             'email' => 'general_manager@job.com',
-            'password' => '$2y$10$H2Vof82ZT3GfX/86sDKy0uXImjiEIiM56DEzKEg/W0k/K2pfZrU3e',
+            'password' => '$2y$10$knAqGkIf3aiOWHck1Nv2Ge3rwbGmbb226XGAZe0ngNpx2TIfeIjbS',
             'mobile_number' => '000000000000',
             'created_at' => Carbon::now()
         ]);

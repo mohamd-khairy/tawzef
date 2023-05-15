@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'users' => 'employee',
     'oops' => "Oops :(",
     'for_your_intrest' => 'For your intrest',
     'it_seems_no_access' => "It seems that you don't have access to this record.",
@@ -139,13 +140,13 @@ return [
     'service_categories' => 'Services Categories',
     'service_name' => 'Service name',
     'filter_now' => 'Filter Now',
-    'our_offices' => 'Offices',
+    'our_offices' => 'employeer',
     'our_mission' => 'Our Mission',
     'our_vision' => 'Our Vision',
     'our_value' => 'Our Value',
     'our_statistics' => 'Our Statistics',
     'our_clients' => 'Our Professional Clients',
-    'offices' => 'Offices',
+    'offices' => 'employeer',
     'recent' => 'Recent',
     'no_search_result' => 'No Search Result',
     'compare_with' => 'Compare With',
