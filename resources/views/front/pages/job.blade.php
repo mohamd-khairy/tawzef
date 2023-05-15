@@ -53,7 +53,7 @@
                                     <input type="text" class="form-control" name="phone" placeholder="Phone number">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="file" class="form-control bg-white" name="resume" id="formFile" required data-parsley-required>
+                                    <input multiple type="file" class="form-control bg-white" name="resume" id="formFile" required data-parsley-required>
                                 </div>
                                 <div class="col-12">
                                     <textarea class="form-control" rows="5" name="message" placeholder="Coverletter"></textarea>
