@@ -31,11 +31,8 @@ class DatabaseSeeder extends Seeder
 
         // Modules Seeders
         $this->call(\Modules\Dashboard\Database\Seeders\DashboardDatabaseSeeder::class);
-        $this->call(\Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class);
-        $this->call(\Modules\Socials\Database\Seeders\SocialsDatabaseSeeder::class);
         $this->call(\Modules\Settings\Database\Seeders\SettingsDatabaseSeeder::class);
         $this->call(\Modules\ContactUS\Database\Seeders\ContactUSDatabaseSeeder::class);
-        $this->call(\Modules\Attachments\Database\Seeders\AttachmentsDatabaseSeeder::class);
         $this->call(\Modules\CMS\Database\Seeders\CMSModuleModuleSeeder::class);
         $this->call(\Modules\CMS\Database\Seeders\CMSDatabaseSeeder::class);
         $this->call(\Modules\Careers\Database\Seeders\CareersDatabaseSeeder::class);

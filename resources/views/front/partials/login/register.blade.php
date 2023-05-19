@@ -44,7 +44,7 @@
             </div>
             <div class="col-12">
                 <div class="mb-3">
-                    <input type="text" class='form-control' name="mobile_number"
+                    <input type="number" class='form-control' name="mobile_number"
                         placeholder="{{ __('users.mobile_number') }}" required data-parsley-required
                         data-parsley-required-message="{{ __('users.please_enter_the_mobile_number') }}"
                         data-parsley-trigger="change focusout" />

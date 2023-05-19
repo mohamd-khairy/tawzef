@@ -77,27 +77,27 @@
                     @endforeach
                 </select>
             </div>
-            <input type="text" name="full_name" placeholder="{{ __('users.full_name') }}"
+            <input required type="text" name="full_name" placeholder="{{ __('users.full_name') }}"
             required data-parsley-required class="form-control mb-4"
             data-parsley-required-message="{{ __('main.please_enter_your_name') }}"
             data-parsley-trigger="change focusout" />
-            <input type="email" name="email" placeholder="{{ __('users.email') }}"
+            <input required type="email" name="email" placeholder="{{ __('users.email') }}"
             required data-parsley-required class="form-control mb-4"
             data-parsley-required-message="{{ __('main.please_enter_your_email') }}"
             data-parsley-trigger="change focusout" />
-            <input type="text" name="mobile_number" class="form-control mb-4"
+            <input required type="number" name="mobile_number" class="form-control mb-4"
             placeholder="{{ __('users.mobile_number') }}" required data-parsley-required
             data-parsley-required-message="{{ __('users.please_enter_the_mobile_number') }}"
             data-parsley-trigger="change focusout" />
-            <input type="password" name="password" class="form-control mb-4"
+            <input required type="password" name="password" class="form-control mb-4"
             placeholder="{{ __('users.password') }}" required data-parsley-required
             data-parsley-required-message="{{ __('users.please_enter_the_password') }}"
             data-parsley-trigger="change focusout" />
-            <input type="password" name="password_confirmation" class="form-control mb-4"
+            <input required type="password" name="password_confirmation" class="form-control mb-4"
             placeholder="{{ __('users.password_confirmation') }}" required data-parsley-required
             data-parsley-required-message="{{ __('users.please_enter_the_password_confirmation') }}"
             data-parsley-trigger="change focusout" />
-            <input type="submit" name="" value="Sign Up" class="submit-btn btn btn-primary" onclick="register();"/>
+            <input required type="submit" name="" value="Sign Up" class="submit-btn btn btn-primary" onclick="register();"/>
 
           </form>
         </div>
