@@ -50,6 +50,14 @@ class Career extends Model
         'description_ar',
         'location',
         'type',
+        'gender',
+        'years_of_experience',
+        'salary',
+        'age',
+        'marital_status',
+        'services',
+        'message',
+        'branches',
         'category_id', 'number_of_available_vacancies', 'created_at', 'updated_at'
     ];
 

@@ -117,17 +117,66 @@
                                     </div>
                                     <div class="col-4">
                                         <label>{{ trans('main.phone') }}</label>
-                                        <input name="location" class="form-control"
-                                            type="text" placeholder="{{ trans('main.location') }}"
+                                        <input name="location" class="form-control" type="text"
+                                            placeholder="{{ trans('main.location') }}"
                                             data-parsley-trigger="change focusout" required data-parsley-required
                                             data-parsley-required-message="{{ trans('main.location') }}" />
                                     </div>
                                     <div class="col-4">
                                         <label>{{ trans('type') }}</label>
-                                        <input name="type" class="form-control"
-                                            type="text" placeholder="{{ trans('type') }}"
-                                            data-parsley-trigger="change focusout"
+                                        <input name="type" class="form-control" type="text"
+                                            placeholder="{{ trans('type') }}" data-parsley-trigger="change focusout"
                                             data-parsley-required-message="{{ trans('type') }}" />
+                                    </div>
+                                    <div class="col-6">
+                                        <label>gender</label>
+                                        <input name="gender" class="form-control" type="text"
+                                            placeholder="gender" data-parsley-trigger="change focusout"
+                                            data-parsley-required-message="gender" />
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Years of experience</label>
+                                        <input name="years_of_experience" class="form-control" type="text"
+                                            placeholder="years_of_experience" data-parsley-trigger="change focusout"
+                                            data-parsley-required-message="years_of_experience" />
+                                    </div>
+
+                                    <div class="col-6">
+                                        <label>Salary</label>
+                                        <input name="salary" class="form-control" type="text"
+                                            placeholder="Salary" data-parsley-trigger="change focusout"
+                                            data-parsley-required-message="Salary" />
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Age</label>
+                                        <input name="age" class="form-control" type="text" placeholder="age"
+                                            data-parsley-trigger="change focusout"
+                                            data-parsley-required-message="age" />
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Marital status</label>
+                                        <input name="marital_status" class="form-control" type="text"
+                                            placeholder="marital_status" data-parsley-trigger="change focusout"
+                                            data-parsley-required-message="marital_status" />
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label>Qualification</label>
+                                        <textarea name="services" class="form-control" type="text" placeholder="Qualification"
+                                            data-parsley-trigger="change focusout" value=""
+                                            data-parsley-required-message="Qualification" ></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <label>About the company</label>
+                                        <textarea name="message" class="form-control" type="text" placeholder="message"
+                                             data-parsley-trigger="change focusout"
+                                            data-parsley-required-message="message"> </textarea>
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Branches</label>
+                                        <input name="branches" class="form-control" type="text"
+                                            placeholder="branches" data-parsley-trigger="change focusout"
+                                            data-parsley-required-message="branches" />
                                     </div>
                                 </div>
                             </div>

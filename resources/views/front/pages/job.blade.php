@@ -34,6 +34,9 @@
                     <div class="mb-5">
                        {!! nl2br($career->description) !!}
                     </div>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Qalifications: {{ $career->services }}</p>
+
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>About the company: {{ $career->message }}</p>
 
                     @if(auth()->check())
                     <div class="">
@@ -52,7 +55,7 @@
                                     <input type="text" class="form-control" name="phone" placeholder="Phone number">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="file" class="form-control bg-white" name="resume" id="formFile" required data-parsley-required>
+                                    <input type="file" multiple class="form-control bg-white" name="resume" id="formFile" required data-parsley-required>
                                 </div>
                                 <div class="col-12">
                                     <textarea class="form-control" rows="5" name="message" placeholder="Coverletter"></textarea>
@@ -73,6 +76,13 @@
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{ $career->number_of_available_vacancies }} Position</p>
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: {{ $career->type }}</p>
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{ $career->location }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Gender: {{ $career->gender }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Years of experience: {{ $career->years_of_experience }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: {{ $career->salary }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Age: {{ $career->age }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Marital status: {{ $career->marital_status }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Branches: {{ $career->branches }}</p>
+
                     </div>
                     <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
                         <h4 class="mb-4">Company Detail</h4>
