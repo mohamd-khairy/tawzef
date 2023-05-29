@@ -22,7 +22,7 @@
                 <div class="col-lg-8">
                     <div class="d-flex align-items-center mb-5">
                         <img class="flex-shrink-0 img-fluid border rounded" src="{{ asset('storage/'.$career->creator->image) }}" alt=""
-                        
+
                             style="width: 80px; height: 80px;">
                         <div class="text-start ps-4">
                             <h3 class="mb-3">{{ $career->title }}</h3>
@@ -35,6 +35,9 @@
                     <div class="mb-5">
                        {!! nl2br($career->description) !!}
                     </div>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Qalifications: {{ $career->services }}</p>
+
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>About the company: {{ $career->message }}</p>
 
                     @if(auth()->check())
                     <div class="">
@@ -74,6 +77,13 @@
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{ $career->number_of_available_vacancies }} Position</p>
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: {{ $career->type }}</p>
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Phone: {{ $career->location }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Gender: {{ $career->gender }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Years of experience: {{ $career->years_of_experience }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: {{ $career->salary }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Age: {{ $career->age }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Marital status: {{ $career->marital_status }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Branches: {{ $career->branches }}</p>
+
                     </div>
                     <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
                         <h4 class="mb-4">Company Detail</h4>

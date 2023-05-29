@@ -69,17 +69,28 @@ class CareersController extends Controller
     public function apply(Request $request)
     {
         $data = $request->all();
-        if($data['resume']){
-            $data['resume'] = $data['resume']->store('applications','public');
+
+        if (is_array($request->resume)) {
+            foreach ($request->resume as $k => $item) {
+                if ($data['resume'][$k]) {
+                    $files[] = $data['resume'][$k]->store('applications', 'public');
+                }
+            }
+
+            $data['resume'] = implode('|', $files);
+        } else {
+            if ($data['resume']) {
+                $data['resume'] = $data['resume']->store('applications', 'public');
+            }
         }
+
         $career_apply =  CareerApply::create($data);
 
         // Return the response
         $resp = new ServiceResponse;
-        $resp->message ='Created Successfully';
+        $resp->message = 'Created Successfully';
         $resp->status = true;
         $resp->data = $career_apply;
-
         return response()->json($resp, 200);
     }
 }

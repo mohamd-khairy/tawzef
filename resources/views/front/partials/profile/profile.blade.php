@@ -79,7 +79,8 @@
                                 <div class="custom-file-input mb-3">
                                     <div class="avatar rounded-circle">
                                         <img class="rounded-circle img-thumbnail" id="output" width="100"
-                                            src="{{ URL::asset($user->image ? 'storage/'.$user->image : 'assets/app/media/img/bg/bg-1.jpg') }}" alt="{{ $user->full_name }}">
+                                            src="{{ URL::asset('storage/' . $user->image) }}"
+                                            alt="{{ $user->full_name }}">
                                     </div>
 
                                     <label class="form-label" for="ch-img">
@@ -92,7 +93,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" class='form-control' value="{{ $user->username }}"
+                                    <input type="text" required class='form-control' value="{{ $user->username }}"
                                         name="username" placeholder="{{ __('users.username') }}"required
                                         data-parsley-required
                                         data-parsley-required-message="{{ __('users.username_is_required') }}"
@@ -119,7 +120,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="text" class='form-control' value="{{ $user->mobile_number }}" value
+                                    <input type="number" class='form-control' value="{{ $user->mobile_number }}" value
                                         name="mobile_number" placeholder="{{ __('users.mobile_number') }}" required
                                         data-parsley-required
                                         data-parsley-required-message="{{ __('users.please_enter_the_mobile_number') }}"
@@ -128,19 +129,19 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="password" class='form-control' name="password"
+                                    <input type="password" required class='form-control' name="password"
                                         placeholder="{{ __('users.password') }}" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <input type="password" class='form-control' name="password_confirmation"
+                                    <input type="password" required class='form-control' name="password_confirmation"
                                         placeholder="{{ __('users.password_confirmation') }}" />
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <textarea type="text" class='form-control bio' rows="2" name="bio" placeholder="{{ __('users.bio') }}">{{ $user->bio }}</textarea>
+                                    <textarea type="text" required class='form-control bio' rows="2" name="bio" placeholder="{{ __('users.bio') }}">{{ $user->bio }}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -158,189 +159,253 @@
 
                 </div>
             </div>
-            @if($careers)
-            <div id="MyJobs" class="tabcontent" style="display: none;">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#exampleModalCenter">
-                    Create Job
-                </button>
-                <h3>MyJobs</h3>
-                @foreach ($careers as $career)
-                    <div class="job-item p-4 mb-4">
-                        <div class="row g-4">
-                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
+            @if ($careers)
+                <div id="MyJobs" class="tabcontent" style="display: none;">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalCenter">
+                        Create Job
+                    </button>
+                    <h3>MyJobs</h3>
+                    @foreach ($careers as $career)
+                        <div class="job-item p-4 mb-4">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
 
 
-                                <img class="flex-shrink-0 img-fluid border rounded"
-                                src="{{ asset('storage/'.$career->creator->image) }}" alt=""
-                                style="width: 80px; height: 80px;">
-                                <a href="{{ route('front.careerSingle', ['id' => $career->id]) }}">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3">{{ $career->title }}</h5>
-                                        <span class="text-truncate me-3"><i class="fas fa-phone"></i>{{ $career->location }}</span>
-                                        <span class="text-truncate me-3"><i
-                                                class="far fa-clock text-primary me-2"></i>{{ $career->type }}</span>
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="{{ asset('storage/' . $career->creator->image) }}" alt=""
+                                        style="width: 80px; height: 80px;">
+                                    <a href="{{ route('front.careerSingle', ['id' => $career->id]) }}">
+                                        <div class="text-start ps-4">
+                                            <h5 class="mb-3">{{ $career->title }}</h5>
+                                            <span class="text-truncate me-3"><i
+                                                    class="fas fa-phone"></i>{{ $career->location }}</span>
+                                            <span class="text-truncate me-3"><i
+                                                    class="far fa-clock text-primary me-2"></i>{{ $career->type }}</span>
 
-                                    </div>
-                                </a>
-                            </div>
-                            <div
-                                class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                <div class="d-flex mb-3">
-                                    {{-- <a class="btn btn-light btn-square me-3" href=""><i
-                                    class="far fa-heart text-primary"></i></a> --}}
-                                    <a class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModalCenter-{{ $career->id }}">Edit</a>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="modal fade" id="exampleModalCenter-{{ $career->id }}" tabindex="-1"
-                                    role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                {{-- <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> --}}
-                                                {{-- <button type="button" class="close" data-dismiss="modal"
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        {{-- <a class="btn btn-light btn-square me-3" href=""><i
+                                    class="far fa-heart text-primary"></i></a> --}}
+                                        <a class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModalCenter-{{ $career->id }}">Edit</a>
+                                    </div>
+                                    <div class="modal fade" id="exampleModalCenter-{{ $career->id }}"
+                                        tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    {{-- <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> --}}
+                                                    {{-- <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button> --}}
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ route('careers.edit') }}" method="POST"
-                                                    id="update_career_form_{{ $career->id }}"
-                                                    enctype="multipart/form-data"
-                                                    class="m-form m-form--fit m-form--label-align-right m-form--group-seperator"
-                                                    data-async data-callback="createCareerCallback"
-                                                    data-parsley-validate>
-                                                    @csrf
-                                                    <div class="m-portlet__body">
-                                                        <input type="hidden" name="id" id="id"
-                                                            value="{{ $career->id }}" />
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ route('careers.edit') }}" method="POST"
+                                                        id="update_career_form_{{ $career->id }}"
+                                                        enctype="multipart/form-data"
+                                                        class="m-form m-form--fit m-form--label-align-right m-form--group-seperator"
+                                                        data-async data-callback="createCareerCallback"
+                                                        data-parsley-validate>
+                                                        @csrf
+                                                        <div class="m-portlet__body">
+                                                            <input type="hidden" name="id" id="id"
+                                                                value="{{ $career->id }}" />
 
-                                                        <div class="col-12">
-                                                            <label
-                                                                for="category_id">{{ __('categories::category.category') }}</label>
-                                                            <select
-                                                                class="form-control form-select form-select-lg mb-3 "
-                                                                name="category_id" id="category_id" required>
-                                                                @foreach ($categories as $category)
-                                                                    <option value="{{ $category->id }}"
-                                                                        {{ $category->id == $career->category_id ? 'selected' : '' }}>
-                                                                        {{ $category->title }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <div class="col-12">
+                                                                <label
+                                                                    for="category_id">{{ __('categories::category.category') }}</label>
+                                                                <select
+                                                                    class="form-control form-select form-select-lg mb-3 "
+                                                                    name="category_id" id="category_id" required>
+                                                                    @foreach ($categories as $category)
+                                                                        <option value="{{ $category->id }}"
+                                                                            {{ $category->id == $career->category_id ? 'selected' : '' }}>
+                                                                            {{ $category->title }}</option>
+                                                                    @endforeach
+                                                                </select>
 
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-6">
-                                                                <label
-                                                                    for="title_en">{{ __('careers::career.title_en') }}</label>
-                                                                <input name="title_en" id="title_en" type="text"
-                                                                    class="form-control"
-                                                                    placeholder="{{ __('careers::career.please_enter_the_career') }}"
-                                                                    required data-parsley-required
-                                                                    value="{{ $career->title_en }}"
-                                                                    data-parsley-required-message="{{ __('careers::career.please_enter_the_career') }}"
-                                                                    data-parsley-trigger="change focusout"
-                                                                    data-parsley-maxlength="150"
-                                                                    data-parsley-maxlength-message="{{ __('careers::career.title_max_is_150_characters_long') }}">
                                                             </div>
-                                                            <div class="col-6">
-                                                                <label
-                                                                    for="title_ar">{{ __('careers::career.title_ar') }}</label>
-                                                                <input name="title_ar" id="title_ar" type="text"
-                                                                    class="form-control"
-                                                                    placeholder="{{ __('careers::career.please_enter_the_career') }}"
-                                                                    required data-parsley-required
-                                                                    value="{{ $career->title_ar }}"
-                                                                    data-parsley-required-message="{{ __('careers::career.please_enter_the_career') }}"
-                                                                    data-parsley-trigger="change focusout"
-                                                                    data-parsley-maxlength="150"
-                                                                    data-parsley-maxlength-message="{{ __('careers::career.title_max_is_150_characters_long') }}">
-                                                            </div>
-                                                            <div class="col-lg-12">
-                                                                <label
-                                                                    for="description_en">{{ __('careers::career.description_en') }}
-                                                                    <small class="text-muted"> -
-                                                                        {{ __('careers::career.optional') }}</small></label>
-                                                                <textarea rows="6" name="description_en" id="description_en" class="form-control description_en"
-                                                                    placeholder="{{ __('careers::career.enter_description') }}" data-parsley-trigger="change focusout"
-                                                                    data-parsley-maxlength="4294967295"
-                                                                    data-parsley-maxlength-message="{{ __('careers::career.description_max_is_4294967295_characters_long') }}"
-                                                                    required data-parsley-required
-                                                                    data-parsley-required-message="{{ __('careers::career.please_enter_the_career') }}">{{ $career->description_en }}</textarea>
-                                                            </div>
-                                                            <div class="col-lg-12">
-                                                                <label
-                                                                    for="description_ar">{{ __('careers::career.description_ar') }}
-                                                                    <small class="text-muted"> -
-                                                                        {{ __('careers::career.optional') }}</small></label>
-                                                                <textarea rows="6" name="description_ar" id="description_ar" class="form-control description_ar"
-                                                                    placeholder="{{ __('careers::career.enter_description') }}" data-parsley-trigger="change focusout"
-                                                                    data-parsley-maxlength="4294967295"
-                                                                    data-parsley-maxlength-message="{{ __('careers::career.description_max_is_4294967295_characters_long') }}"
-                                                                    required data-parsley-required
-                                                                    data-parsley-required-message="{{ __('careers::career.please_enter_the_career') }}">{{ $career->description_ar }}</textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-6">
-                                                                <label>{{ trans('careers::career.number') }}</label>
-                                                                <input name="number_of_available_vacancies"
-                                                                    class="form-control" type="number"
-                                                                    placeholder="{{ trans('careers::career.number') }}"
-                                                                    data-parsley-trigger="change focusout" required
-                                                                    data-parsley-required
-                                                                    value="{{ $career->number_of_available_vacancies }}"
-                                                                    data-parsley-required-message="{{ __('careers::career.please_enter_the_number_of_available_vacancies') }}" />
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <label>{{ trans('main.phone') }}</label>
-                                                                <input name="location" class="form-control"
-                                                                    value="{{ $career->location }}" type="text"
-                                                                    placeholder="{{ trans('main.location') }}"
-                                                                    data-parsley-trigger="change focusout" required
-                                                                    data-parsley-required
-                                                                    data-parsley-required-message="{{ trans('main.location') }}" />
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <label>Type</label>
-                                                                <input name="type" class="form-control"
-                                                                    value="{{ $career->type }}" type="text"
-                                                                    placeholder="Type"
-                                                                    data-parsley-trigger="change focusout"
-                                                                    data-parsley-required-message="Type" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit mt-3">
-                                                        <div class="m-form__actions m-form__actions--solid">
-                                                            <div class="row">
+                                                            <div class="form-group row">
+                                                                <div class="col-6">
+                                                                    <label
+                                                                        for="title_en">{{ __('careers::career.title_en') }}</label>
+                                                                    <input name="title_en" id="title_en"
+                                                                        type="text" class="form-control"
+                                                                        placeholder="{{ __('careers::career.please_enter_the_career') }}"
+                                                                        required data-parsley-required
+                                                                        value="{{ $career->title_en }}"
+                                                                        data-parsley-required-message="{{ __('careers::career.please_enter_the_career') }}"
+                                                                        data-parsley-trigger="change focusout"
+                                                                        data-parsley-maxlength="150"
+                                                                        data-parsley-maxlength-message="{{ __('careers::career.title_max_is_150_characters_long') }}">
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label
+                                                                        for="title_ar">{{ __('careers::career.title_ar') }}</label>
+                                                                    <input name="title_ar" id="title_ar"
+                                                                        type="text" class="form-control"
+                                                                        placeholder="{{ __('careers::career.please_enter_the_career') }}"
+                                                                        required data-parsley-required
+                                                                        value="{{ $career->title_ar }}"
+                                                                        data-parsley-required-message="{{ __('careers::career.please_enter_the_career') }}"
+                                                                        data-parsley-trigger="change focusout"
+                                                                        data-parsley-maxlength="150"
+                                                                        data-parsley-maxlength-message="{{ __('careers::career.title_max_is_150_characters_long') }}">
+                                                                </div>
                                                                 <div class="col-lg-12">
-                                                                    <button type="button"
-                                                                        class="btn btn-success update-job"
-                                                                        div-id="update_career_form_{{ $career->id }}">{{ __('main.submit') }}</button>
-                                                                    <button type="reset"
-                                                                        class="btn btn-secondary">{{ __('main.reset') }}</button>
+                                                                    <label
+                                                                        for="description_en">{{ __('careers::career.description_en') }}
+                                                                        <small class="text-muted"> -
+                                                                            {{ __('careers::career.optional') }}</small></label>
+                                                                    <textarea rows="6" name="description_en" id="description_en" class="form-control description_en"
+                                                                        placeholder="{{ __('careers::career.enter_description') }}" data-parsley-trigger="change focusout"
+                                                                        data-parsley-maxlength="4294967295" required
+                                                                        data-parsley-maxlength-message="{{ __('careers::career.description_max_is_4294967295_characters_long') }}"
+                                                                        required data-parsley-required
+                                                                        data-parsley-required-message="{{ __('careers::career.please_enter_the_career') }}">{{ $career->description_en }}</textarea>
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <label
+                                                                        for="description_ar">{{ __('careers::career.description_ar') }}
+                                                                        <small class="text-muted"> -
+                                                                            {{ __('careers::career.optional') }}</small></label>
+                                                                    <textarea rows="6" name="description_ar" id="description_ar" class="form-control description_ar"
+                                                                        placeholder="{{ __('careers::career.enter_description') }}" data-parsley-trigger="change focusout"
+                                                                        data-parsley-maxlength="4294967295" required
+                                                                        data-parsley-maxlength-message="{{ __('careers::career.description_max_is_4294967295_characters_long') }}"
+                                                                        required data-parsley-required
+                                                                        data-parsley-required-message="{{ __('careers::career.please_enter_the_career') }}">{{ $career->description_ar }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-6">
+                                                                    <label>{{ trans('careers::career.number') }}</label>
+                                                                    <input name="number_of_available_vacancies"
+                                                                        class="form-control" type="number" 
+                                                                        placeholder="{{ trans('careers::career.number') }}"
+                                                                        data-parsley-trigger="change focusout" required
+                                                                        data-parsley-required
+                                                                        value="{{ $career->number_of_available_vacancies }}"
+                                                                        data-parsley-required-message="{{ __('careers::career.please_enter_the_number_of_available_vacancies') }}" />
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label>{{ trans('main.phone') }}</label>
+                                                                    <input name="location" class="form-control"
+                                                                        value="{{ $career->location }}"
+                                                                        type="number"
+                                                                        placeholder="{{ trans('main.phone') }}"
+                                                                        data-parsley-trigger="change focusout" required
+                                                                        data-parsley-required
+                                                                        data-parsley-required-message="{{ trans('main.phone') }}" />
+                                                                </div>
+                                                                <div class="col-4">
+                                                                    <label>Type</label>
+                                                                    <select name="type" class="form-control" required  data-parsley-trigger="change focusout" data-parsley-required-message="gender">
+                                                                        <option value="male">Full time</option>
+                                                                        <option value="female">Part Time</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label>Gender</label>
+                                                                        <select name="gender" class="form-control" required  data-parsley-trigger="change focusout" data-parsley-required-message="gender">
+                                                                            <option value="male">Male</option>
+                                                                            <option value="female">Female</option>
+                                                                        </select>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label>Years of experience</label>
+                                                                    <input name="years_of_experience"
+                                                                        class="form-control" type="number" required
+                                                                        value="{{ $career->years_of_experience }}"
+                                                                        placeholder="years_of_experience"
+                                                                        data-parsley-trigger="change focusout"
+                                                                        data-parsley-required-message="years_of_experience" />
+                                                                </div>
 
+                                                                <div class="col-6">
+                                                                    <label>Salary</label>
+                                                                    <input name="salary" class="form-control"
+                                                                        type="number" placeholder="Salary" required
+                                                                        value="{{ $career->salary }}"
+                                                                        data-parsley-trigger="change focusout"
+                                                                        data-parsley-required-message="Salary" />
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label>Age</label>
+                                                                    <input name="age" class="form-control"
+                                                                        type="number" placeholder="age" required
+                                                                        value="{{ $career->age }}"
+                                                                        data-parsley-trigger="change focusout"
+                                                                        data-parsley-required-message="age" />
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label>Marital status</label>
+                                                                    <input name="marital_status" class="form-control" required
+                                                                        type="text" placeholder="marital_status"
+                                                                        value="{{ $career->martial_status }}"
+                                                                        data-parsley-trigger="change focusout"
+                                                                        data-parsley-required-message="marital_status" />
+                                                                </div>
+
+                                                                <div class="col-12">
+                                                                    <label>Qualification</label>
+                                                                    <textarea name="services" class="form-control" type="text" placeholder="Qualification"
+                                                                        data-parsley-trigger="change focusout" value="" required
+                                                                        data-parsley-required-message="Qualification" >{{ $career->services }}</textarea>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <label>About the company</label>
+                                                                    <textarea name="message" class="form-control" type="text" placeholder="message"
+                                                                         data-parsley-trigger="change focusout" required
+                                                                        data-parsley-required-message="message">{{ $career->message }} </textarea>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label>Branches</label>
+                                                                    <input name="branches" class="form-control"
+                                                                        type="text" placeholder="branches" required
+                                                                        value="{{ $career->branches }}"
+                                                                        data-parsley-trigger="change focusout"
+                                                                        data-parsley-required-message="branches" />
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                                        <div
+                                                            class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit mt-3">
+                                                            <div class="m-form__actions m-form__actions--solid">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <button type="button"
+                                                                            class="btn btn-success update-job"
+                                                                            div-id="update_career_form_{{ $career->id }}">{{ __('main.submit') }}</button>
+                                                                        <button type="reset"
+                                                                            class="btn btn-secondary">{{ __('main.reset') }}</button>
 
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                {{-- <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                    {{-- <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
                             Line: 01 Jan,
                             2045</small> --}}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
             @endif
 
             <div id="MyApplications" class="tabcontent" style="display: none;">
@@ -349,8 +414,8 @@
                         <div class="row g-4">
                             <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                 <img class="flex-shrink-0 img-fluid border rounded"
-                                            src="{{ asset('storage/'.$application->career->creator->image) }}" alt=""
-                                    style="width: 80px; height: 80px;">
+                                    src="{{ asset(isset($application->career->creator->image) ? 'storage/' . $application->career->creator->image : '') }}"
+                                    alt="" style="width: 80px; height: 80px;">
                                 <div class="text-start ps-4">
                                     <h5 class="mb-3">{{ $application->career->title }}</h5>
                                     <span class="text-truncate me-3"><i
@@ -364,12 +429,28 @@
                             </div>
                             <div
                                 class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                <div class="d-flex mb-3">
-                                    {{-- <a class="btn btn-light btn-square me-3" href=""><i
-                                        class="far fa-heart text-primary"></i></a> --}}
-                                    <a class="btn btn-primary" href="{{ asset('storage/' . $application->resume) }}"
-                                        download>Resume</a>
-                                </div>
+
+                                @if (str_contains($application->resume, '|'))
+                                    @php
+                                       $all = explode('|' , $application->resume);
+                                    @endphp
+
+                                    @foreach ($all as $k => $resume)
+                                    <div class="d-flex mb-3">
+                                        {{-- <a class="btn btn-light btn-square me-3" href=""><i
+                                            class="far fa-heart text-primary"></i></a> --}}
+                                        <a class="btn btn-primary" href="{{ asset($resume ? 'storage/' . $resume : '') }}"
+                                            download>Resume({{$k + 1}})</a>
+                                    </div>
+                                    @endforeach
+                                    @else
+                                    <div class="d-flex mb-3">
+                                        {{-- <a class="btn btn-light btn-square me-3" href=""><i
+                                            class="far fa-heart text-primary"></i></a> --}}
+                                        <a class="btn btn-primary" href="{{ asset($application->resume ? 'storage/' . $application->resume : '') }}"
+                                            download>Resume</a>
+                                    </div>
+                                @endif
                                 {{-- <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
                                 Line: 01 Jan,
                                 2045</small> --}}
@@ -465,16 +546,65 @@
                             </div>
                             <div class="col-6">
                                 <label>{{ trans('main.phone') }}</label>
-                                <input name="location" class="form-control" type="number" required
-                                    placeholder="{{ trans('main.phone') }}"
-                                    data-parsley-trigger="change focusout" required data-parsley-required
+                                <input name="location" class="form-control" type="text"  required
+                                    placeholder="{{ trans('main.phone') }}" data-parsley-trigger="change focusout"
+                                    required data-parsley-required
                                     data-parsley-required-message="{{ trans('main.phone') }}" />
                             </div>
                             <div class="col-6">
                                 <label>Type</label>
-                                <input name="type" class="form-control" type="text" placeholder="type" required
-                                    data-parsley-trigger="change focusout"
-                                    data-parsley-required-message="type" />
+                                <select name="type" class="form-control" required  data-parsley-trigger="change focusout" data-parsley-required-message="gender">
+                                    <option value="male">Full time</option>
+                                    <option value="female">Part Time</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label>Gender</label>
+                                <select name="gender" class="form-control" required  data-parsley-trigger="change focusout" data-parsley-required-message="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label>Years of experience</label>
+                                <input name="years_of_experience" class="form-control" type="number" required
+                                    placeholder="years_of_experience" data-parsley-trigger="change focusout"
+                                    data-parsley-required-message="years_of_experience" />
+                            </div>
+
+                            <div class="col-6">
+                                <label>Salary</label>
+                                <input name="salary" class="form-control" type="number" required placeholder="Salary"
+                                    data-parsley-trigger="change focusout" data-parsley-required-message="Salary" />
+                            </div>
+                            <div class="col-6">
+                                <label>Age</label>
+                                <input name="age" class="form-control" type="number" required placeholder="age"
+                                    data-parsley-trigger="change focusout" data-parsley-required-message="age" />
+                            </div>
+                            <div class="col-6">
+                                <label>Marital status</label>
+                                <input name="marital_status" class="form-control" type="text" required
+                                    placeholder="marital_status" data-parsley-trigger="change focusout"
+                                    data-parsley-required-message="marital_status" />
+                            </div>
+
+                            <div class="col-12">
+                                <label>Qualification</label>
+                                <textarea name="services" class="form-control" type="text" required placeholder="Qualification"
+                                    data-parsley-trigger="change focusout" value=""
+                                    data-parsley-required-message="Qualification" ></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label>About the company</label>
+                                <textarea name="message" class="form-control" type="text" required placeholder="message"
+                                     data-parsley-trigger="change focusout"
+                                    data-parsley-required-message="message"> </textarea>
+                            </div>
+                            <div class="col-6">
+                                <label>Branches</label>
+                                <input name="branches" class="form-control" type="text" required placeholder="branches"
+                                    data-parsley-trigger="change focusout" data-parsley-required-message="branches" />
                             </div>
                         </div>
                     </div>
