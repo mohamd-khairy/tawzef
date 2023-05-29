@@ -3,7 +3,7 @@
         <div class="owl-carousel header-carousel position-relative">
             @foreach ($sliders as  $slider)
                 <div class="owl-carousel-item position-relative">
-                    <img class="img-fluid" src="{{ asset('storage/'.$slider->image ) }}" alt="" style="max-height: 400px;">
+                    <img class="img-fluid" src="{{ asset($slider->image ? 'storage/'.$slider->image : 'assets/app/media/img/bg/bg-1.jpg' ) }}" alt="" style="max-height: 400px;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                         style="background: rgba(43, 57, 64, .5);">
                         <div class="container">

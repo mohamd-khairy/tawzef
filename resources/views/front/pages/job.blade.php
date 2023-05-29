@@ -44,19 +44,19 @@
                             <input type="hidden" class="form-control" id="applied_by" name="applied_by" value="{{ auth()->user()->id }}">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" name="full_name"  placeholder="Your Name">
+                                    <input type="text" class="form-control" name="full_name"  placeholder="Your Name" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control" name="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control" name="phone" placeholder="Phone number">
+                                    <input type="number" class="form-control" name="phone" placeholder="Phone number" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input multiple type="file" class="form-control bg-white" name="resume" id="formFile" required data-parsley-required>
+                                    <input multiple type="file" class="form-control bg-white" name="resume[]" id="formFile" required data-parsley-required>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control" rows="5" name="message" placeholder="Coverletter"></textarea>
+                                    <textarea class="form-control" rows="5" name="message" placeholder="Coverletter" required></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 apply-from" type="button">Apply Now</button>
@@ -73,7 +73,7 @@
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{ $career->created_at }}</p>
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{ $career->number_of_available_vacancies }} Position</p>
                         <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: {{ $career->type }}</p>
-                        <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{ $career->location }}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Phone: {{ $career->location }}</p>
                     </div>
                     <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
                         <h4 class="mb-4">Company Detail</h4>

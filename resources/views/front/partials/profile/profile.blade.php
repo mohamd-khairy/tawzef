@@ -79,7 +79,7 @@
                                 <div class="custom-file-input mb-3">
                                     <div class="avatar rounded-circle">
                                         <img class="rounded-circle img-thumbnail" id="output" width="100"
-                                            src="{{ URL::asset('storage/'.$user->image) }}" alt="{{ $user->full_name }}">
+                                            src="{{ URL::asset($user->image ? 'storage/'.$user->image : 'assets/app/media/img/bg/bg-1.jpg') }}" alt="{{ $user->full_name }}">
                                     </div>
 
                                     <label class="form-label" for="ch-img">
@@ -404,7 +404,7 @@
 
                         <div class="col-12">
                             <label for="category_id">{{ __('categories::category.category') }}</label>
-                            <select class="form-control form-select form-select-lg mb-3 " name="category_id"
+                            <select class="form-control form-select form-select-lg mb-3 " name="category_id" required
                                 id="category_id" required>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">
@@ -436,7 +436,7 @@
                                 <label for="description_en">{{ __('careers::career.description_en') }} <small
                                         class="text-muted"> -
                                         {{ __('careers::career.optional') }}</small></label>
-                                <textarea rows="6" name="description_en" id="description_en" class="form-control description_en"
+                                <textarea rows="6" name="description_en" id="description_en" class="form-control description_en" required
                                     placeholder="{{ __('careers::career.enter_description') }}" data-parsley-trigger="change focusout"
                                     data-parsley-maxlength="4294967295"
                                     data-parsley-maxlength-message="{{ __('careers::career.description_max_is_4294967295_characters_long') }}"
@@ -447,7 +447,7 @@
                                 <label for="description_ar">{{ __('careers::career.description_ar') }} <small
                                         class="text-muted"> -
                                         {{ __('careers::career.optional') }}</small></label>
-                                <textarea rows="6" name="description_ar" id="description_ar" class="form-control description_ar"
+                                <textarea rows="6" name="description_ar" id="description_ar" class="form-control description_ar" required
                                     placeholder="{{ __('careers::career.enter_description') }}" data-parsley-trigger="change focusout"
                                     data-parsley-maxlength="4294967295"
                                     data-parsley-maxlength-message="{{ __('careers::career.description_max_is_4294967295_characters_long') }}"
@@ -458,21 +458,21 @@
                         <div class="form-group row">
                             <div class="col-6">
                                 <label>{{ trans('careers::career.number') }}</label>
-                                <input name="number_of_available_vacancies" class="form-control" type="number"
+                                <input name="number_of_available_vacancies" class="form-control" type="number" required
                                     placeholder="{{ trans('careers::career.number') }}"
                                     data-parsley-trigger="change focusout" required data-parsley-required
                                     data-parsley-required-message="{{ __('careers::career.please_enter_the_number_of_available_vacancies') }}" />
                             </div>
                             <div class="col-6">
                                 <label>{{ trans('main.phone') }}</label>
-                                <input name="location" class="form-control" type="text"
-                                    placeholder="{{ trans('main.location') }}"
+                                <input name="location" class="form-control" type="number" required
+                                    placeholder="{{ trans('main.phone') }}"
                                     data-parsley-trigger="change focusout" required data-parsley-required
-                                    data-parsley-required-message="{{ trans('main.location') }}" />
+                                    data-parsley-required-message="{{ trans('main.phone') }}" />
                             </div>
                             <div class="col-6">
                                 <label>Type</label>
-                                <input name="type" class="form-control" type="text" placeholder="type"
+                                <input name="type" class="form-control" type="text" placeholder="type" required
                                     data-parsley-trigger="change focusout"
                                     data-parsley-required-message="type" />
                             </div>
